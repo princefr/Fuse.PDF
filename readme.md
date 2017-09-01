@@ -3,7 +3,7 @@
 
 
 
-#Initatialisation.
+# Initatialisation.
 
 
 You can initialize the module by simply require it in you JS file.
@@ -20,8 +20,8 @@ You can decode the base64 pdf comming from the server by this way, the function 
 the function return a `path` of where your file have been saved.
 
 ```
-	function getPath(){
-		PDF.Transform(data, "/file.pdf").then(function(results){
+	function DecodeFromBase64(){
+		PDF.DecodeFromBase64(data, "/file.pdf").then(function(results){
 			console.log(JSON.stringify(results))
 		}, function(err){
 			console.log(JSON.stringify(err))
@@ -39,9 +39,9 @@ You can encode local pdf to base64 by this way, the fuction takes one argument, 
 the function return a base64 encoded string.
 
 ```
-function FilePathToPDF(){
+function EncodePDFToBase64(){
 	console.log("yeahhh")
-	PDF.PDFToBase64("/file.pdf").then(function(base64){
+	PDF.EncodeToBase64("/file.pdf").then(function(base64){
 		console.log(JSON.stringify(base64))
 	}, function(err){
 		console.log(JSON.stringify(err))
@@ -54,8 +54,8 @@ function FilePathToPDF(){
 # View the pdf file (not working for the moment).
 
 ```
-	function lauch(){
-		PDF.LaunchScan("/file.pdf").then(function(results){
+	function ViewPDF(){
+		PDF.ViewPDF("/file.pdf").then(function(results){
 			pdffile.value = results
 				console.log(JSON.stringify(results))
 			}, function(err){
