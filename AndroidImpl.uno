@@ -35,7 +35,7 @@ namespace PDF
 
 	    		try{
 
-	    			String path = Activity.getRootActivity().getFilesDir() + filePath;
+	    			String path = Activity.getRootActivity().getExternalFilesDir(null) + filePath;
 	    			File dwldsPath = new File(path);
 					byte[] pdfAsBytes = Base64.decode(base64String, 0);
 					FileOutputStream os;
@@ -89,8 +89,10 @@ namespace PDF
 			    public void Init(string path)
 			    @{
 
+
+
     			try {
-    				String pathFile = Activity.getRootActivity().getFilesDir() + path;
+    				String pathFile = Activity.getRootActivity().getExternalFilesDir(null) + path;
 					Uri uri = Uri.parse(pathFile);
 					Intent intent = new Intent(Intent.ACTION_VIEW);
 					intent.setDataAndType(uri, "application/pdf");
@@ -146,7 +148,7 @@ namespace PDF
 
 			    	try {
 
-						String pathFile = Activity.getRootActivity().getFilesDir() + path;
+						String pathFile = Activity.getRootActivity().getExternalFilesDir(null) + path;
 						File file = new File(pathFile);
 						byte[] bytesArray = new byte[(int) file.length()];
 						FileInputStream fis = new FileInputStream(file);
