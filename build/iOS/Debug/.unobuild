@@ -1,0 +1,4 @@
+$: 787923667
+BuildCommand: build.sh
+RunCommand: run.sh
+Product: build/Debug-iphoneos/pdf.app/pdf

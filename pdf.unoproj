@@ -1,0 +1,24 @@
+{
+  "RootNamespace":"",
+  "Packages": [
+    "Fuse",
+    "FuseJS",
+    "Android.ActivityUtils",
+    "Fuse.Launcher"
+  ],
+
+  "Android": {
+    "ApplicationLabel": "pdf",
+    "Description": "",
+    "VersionCode": 1036,
+    "VersionName": "0.3.0",
+    "Package": "com.apps.drivers",
+    "GooglePlay": {
+      "SenderID": "111781901112"
+    },
+  },
+  "Includes": [
+    "*"
+  ]
+}
+
