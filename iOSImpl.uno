@@ -15,12 +15,12 @@ using Uno.Threading;
 namespace PDF
 {
 	extern(iOS)
-	class Transform: Promise<string>
+	class DecodeFromBase64: Promise<string>
 	{
 
 
 	[Foreign(Language.ObjC)]
-    public Transform(string base64, string directory)
+    public DecodeFromBase64(string base64, string directory)
     @{
 
     	    @try {
@@ -29,11 +29,11 @@ namespace PDF
 		 		NSString *documentsDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
 				NSString *path = [documentsDirectory stringByAppendingPathComponent:directory];
 				[data writeToFile:path atomically:YES];
-				@{Transform:Of(_this).Resolve(string):Call(path)};
+				@{DecodeFromBase64:Of(_this).Resolve(string):Call(path)};
 		    }
 		    @catch (NSException *exception) {
 		        NSLog(@"%@", exception.reason);
-		        @{Transform:Of(_this).Reject(string):Call(@"Vous devez etre connecter")};
+		        @{DecodeFromBase64:Of(_this).Reject(string):Call(@"Vous devez etre connecter")};
 		    }
 
 
@@ -56,13 +56,13 @@ namespace PDF
 
 	[Require("Source.Include", "WebKit/WebKit.h")]
 	extern(iOS)
-	class LaunchScan: Promise<string>
+	class ViewPDF: Promise<string>
 	{
 
 
 
 	[Foreign(Language.ObjC)]
-    public LaunchScan(string file)
+    public ViewPDF(string file)
     @{
 
     	   @try {
@@ -70,11 +70,11 @@ namespace PDF
 			NSString *path = [documentsDirectory stringByAppendingPathComponent:file];
 			NSURL *targetURL = [NSURL fileURLWithPath:path];
 			NSString *toDisplay = [targetURL absoluteString];
-			@{LaunchScan:Of(_this).Resolve(string):Call(toDisplay)};
+			@{ViewPDF:Of(_this).Resolve(string):Call(toDisplay)};
 		    }
 		    @catch (NSException *exception) {
 		        NSLog(@"%@", exception.reason);
-		        @{LaunchScan:Of(_this).Reject(string):Call(@"La lecture du fichier a echoué")};
+		        @{ViewPDF:Of(_this).Reject(string):Call(@"La lecture du fichier a echoué")};
 		    }
     @}
 
@@ -101,12 +101,12 @@ namespace PDF
 
 
 		extern(iOS)
-		class PDFToBase64: Promise<string>
+		class EncodeToBase64: Promise<string>
 		{
 
 
 		[Foreign(Language.ObjC)]
-	    public PDFToBase64(string file)
+	    public EncodeToBase64(string file)
 	    @{
 
 	    	    @try {
@@ -115,11 +115,11 @@ namespace PDF
 					NSString *path = [documentsDirectory stringByAppendingPathComponent:file];
 					NSData *zipFileData = [NSData dataWithContentsOfFile:path];
     				NSString *base64String = [zipFileData base64EncodedStringWithOptions:0];
-    				@{PDFToBase64:Of(_this).Resolve(string):Call(base64String)};
+    				@{EncodeToBase64:Of(_this).Resolve(string):Call(base64String)};
 
 			    }
 			    @catch (NSException *exception) {
-			    	@{PDFToBase64:Of(_this).Reject(string):Call(exception.reason)};
+			    	@{EncodeToBase64:Of(_this).Reject(string):Call(exception.reason)};
 			    }
 
 	    @}

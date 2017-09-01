@@ -22,9 +22,9 @@ namespace PDF
 	[Require("AndroidManifest.Permission", "android.permission.READ_EXTERNAL_STORAGE")]
 	[Require("AndroidManifest.Permission", "android.permission.READ_INTERNAL_STORAGE")]
 	extern(android)
-	class Transform: Promise<string>
+	class DecodeFromBase64: Promise<string>
 	{
-		public Transform(string base64String, string filePath)
+		public DecodeFromBase64(string base64String, string filePath)
 		{
 			Init(base64String, filePath);
 		}
@@ -43,10 +43,10 @@ namespace PDF
 					os.write(pdfAsBytes);
 					os.flush();
 					os.close();
-					@{Transform:Of(_this).Resolve(string):Call(path)};
+					@{DecodeFromBase64:Of(_this).Resolve(string):Call(path)};
 	    		}catch(Exception e)
 	    		{	
-	    			@{Transform:Of(_this).Reject(string):Call(e.toString())};
+	    			@{DecodeFromBase64:Of(_this).Reject(string):Call(e.toString())};
 	    		}
 
 			
@@ -76,10 +76,10 @@ namespace PDF
 	[Require("AndroidManifest.Permission", "android.permission.READ_EXTERNAL_STORAGE")]
 	[Require("AndroidManifest.Permission", "android.permission.READ_INTERNAL_STORAGE")]
 	extern(android)
-	class LaunchScan: Promise<string>
+	class ViewPDF: Promise<string>
 	{
 
-		public LaunchScan(string path)
+		public ViewPDF(string path)
 		{
 			Init(path);
 		}
@@ -99,7 +99,7 @@ namespace PDF
 						Activity.getRootActivity().startActivity(intent);
 					}
 					} catch (Exception e) {
-						@{LaunchScan:Of(_this).Reject(string):Call(e.toString())};
+						@{ViewPDF:Of(_this).Reject(string):Call(e.toString())};
 						e.printStackTrace();
 					}
 					
@@ -130,10 +130,10 @@ namespace PDF
 	[Require("AndroidManifest.Permission", "android.permission.READ_EXTERNAL_STORAGE")]
 	[Require("AndroidManifest.Permission", "android.permission.READ_INTERNAL_STORAGE")]
 	extern(android)
-	class PDFToBase64: Promise<string>
+	class EncodeToBase64: Promise<string>
 	{
 
-		public PDFToBase64(string path)
+		public EncodeToBase64(string path)
 		{
 			Init(path);
 		}
@@ -153,11 +153,11 @@ namespace PDF
 						fis.read(bytesArray); //read file into bytes[]
 						fis.close();
 			            String encoded = Base64.encodeToString(bytesArray, Base64.DEFAULT);
-			            @{PDFToBase64:Of(_this).Resolve(string):Call(encoded)};
+			            @{EncodeToBase64:Of(_this).Resolve(string):Call(encoded)};
 			    		} catch(Exception e)
 			    		{
 
-			    			@{PDFToBase64:Of(_this).Reject(string):Call(e.toString())};
+			    			@{EncodeToBase64:Of(_this).Reject(string):Call(e.toString())};
 
 			    		}
 

@@ -28,34 +28,34 @@ namespace PDF
 		{
 			if(_instance != null) return;
       		Uno.UX.Resource.SetGlobalKey(_instance = this, "PDF");
-      		AddMember(new NativePromise<string, string>("Transform", Transform));
-      		AddMember(new NativePromise<string, string>("LaunchScan", LaunchScan));
-      		AddMember(new NativePromise<string, string>("PDFToBase64", PDFToBase64));
+      		AddMember(new NativePromise<string, string>("DecodeFromBase64", DecodeFromBase64));
+      		AddMember(new NativePromise<string, string>("ViewPDF", ViewPDF));
+      		AddMember(new NativePromise<string, string>("EncodeToBase64", EncodeToBase64));
       		
 		}
 
-		    Future<string> Transform(object[] args)
+		    Future<string> DecodeFromBase64(object[] args)
 		    {
 		    	var base64 = (string)args[0];
 		    	var filepath = (string)args[1];
-		        return new PDF.Transform(base64, filepath);
+		        return new PDF.DecodeFromBase64(base64, filepath);
 		    }
 
 
-		    	Future<string> LaunchScan(object[] args)
+		    	Future<string> ViewPDF(object[] args)
 		    {
 		    	var path = (string)args[0];
 
-		        return new PDF.LaunchScan(path);
+		        return new PDF.ViewPDF(path);
 		    }
 
 
-		    	Future<string> PDFToBase64(object[] args)
+		    	Future<string> EncodeToBase64(object[] args)
 		    {
 		    	var path = (string)args[0];
 		    	debug_log "hhahahha";
 
-		        return new PDF.PDFToBase64(path);
+		        return new PDF.EncodeToBase64(path);
 		    }
 
 
