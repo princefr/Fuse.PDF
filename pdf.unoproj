@@ -4,7 +4,8 @@
     "Fuse",
     "FuseJS",
     "Android.ActivityUtils",
-    "Fuse.Launcher"
+    "Fuse.Launcher",
+    "Uno.Permissions"
   ],
 
   "Android": {

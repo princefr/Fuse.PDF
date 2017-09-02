@@ -51,7 +51,7 @@ function EncodePDFToBase64(){
 ```
 
 
-# View the pdf file (not working for the moment).
+# View the pdf file.
 
 ```
 	function ViewPDF(){
@@ -66,8 +66,25 @@ function EncodePDFToBase64(){
 
 ```
 
+# For iOS
+You need to setup a Fuse webview and pass the return results of the `ViewPDF` function  as an Url to see the pdf.
+see the example for more.
 
-i'm not affiliated with the fusetools team.
+# For Android
+Ask for permision before Viewing the pdf with the function below.
+
+```
+
+```
+
+You need to have an pdf reader in you app to see it or the launch will fails
+
+
+
+
+
+
+
 
 
 

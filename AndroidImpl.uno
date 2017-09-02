@@ -82,13 +82,14 @@ namespace PDF
 		public ViewPDF(string path)
 		{
 			Init(path);
+			
 		}
+
 
 
 				[Foreign(Language.Java)]
 			    public void Init(string path)
 			    @{
-
 
 
     			try {
@@ -97,6 +98,7 @@ namespace PDF
 					Intent intent = new Intent(Intent.ACTION_VIEW);
 					intent.setDataAndType(uri, "application/pdf");
 					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					//@{ViewPDF:Of(_this).Resolve(string):Call(uri)};
 					if(intent!=null){
 						Activity.getRootActivity().startActivity(intent);
 					}
@@ -180,6 +182,22 @@ namespace PDF
 
 
 	}
+
+
+			extern(Android)
+		    class Permission
+		    {
+
+				    	    public void Execute()
+		    {
+		      if defined(Android)
+		      {
+		        debug_log "youpi";
+		      }
+
+		    }
+
+		    }
 
 
 
