@@ -1,6 +1,6 @@
 # FUSE.PDF
 
-
+Works on iOS & Android
 
 
 # Initatialisation.
@@ -21,7 +21,7 @@ the function return a `path` of where your file have been saved.
 
 ```
 	function DecodeFromBase64(){
-		PDF.DecodeFromBase64(data, "/file.pdf").then(function(results){
+		PDF.DecodeFromBase64(data, "file.pdf").then(function(results){
 			console.log(JSON.stringify(results))
 		}, function(err){
 			console.log(JSON.stringify(err))
@@ -41,7 +41,7 @@ the function return a base64 encoded string.
 ```
 function EncodePDFToBase64(){
 	console.log("yeahhh")
-	PDF.EncodeToBase64("/file.pdf").then(function(base64){
+	PDF.EncodeToBase64("file.pdf").then(function(base64){
 		console.log(JSON.stringify(base64))
 	}, function(err){
 		console.log(JSON.stringify(err))
@@ -54,30 +54,17 @@ function EncodePDFToBase64(){
 # View the pdf file.
 
 ```
-	function ViewPDF(){
-		PDF.ViewPDF("/file.pdf").then(function(results){
-			pdffile.value = results
-				console.log(JSON.stringify(results))
-			}, function(err){
-				console.log(JSON.stringify(err))
-			})
-	
-	}
+			<NativeViewHost>
+				<Native.PDF ux:Name="PDFVIEW"/>
+			</NativeViewHost>
+
+		function ViewPDF(){
+			PDFVIEW.Open("file.pdf");
+		}
 
 ```
 
-# For iOS
-You need to setup a Fuse webview and pass the return results of the `ViewPDF` function  as an Url to see the pdf.
-see the example for more.
 
-# For Android
-Ask for permision before Viewing the pdf with the function below.
-
-```
-
-```
-
-You need to have an pdf reader in you app to see it or the launch will fails
 
 
 
