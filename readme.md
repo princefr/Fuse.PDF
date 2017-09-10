@@ -40,7 +40,6 @@ the function return a base64 encoded string.
 
 ```
 function EncodePDFToBase64(){
-	console.log("yeahhh")
 	PDF.EncodeToBase64("file.pdf").then(function(base64){
 		console.log(JSON.stringify(base64))
 	}, function(err){
@@ -51,7 +50,11 @@ function EncodePDFToBase64(){
 ```
 
 
-# View the pdf file.
+# View the pdf file on both iOS and Android.
+for viewving you pdf file you will need to add `Native.PDF` inside a `NativeViewHost`.
+add an ux:Name to your `Native.PDF` and call on it  `Open` function.
+`Open` function takes one argument , the name of the file you are trying to see and the `.pdf` extension
+
 
 ```
 			<NativeViewHost>
